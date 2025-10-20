@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{46412F77-CCAC-4703-ABE9-48C2F2AA60F2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GESTION_DE_STOCK</RootNamespace>
+    <AssemblyName>GESTION_DE_STOCK</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dashboard.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v13.2.Win, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v13.2" />
+    <Reference Include="DevExpress.DataAccess.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v13.2.UI, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Map.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v13.2.Core" />
+    <Reference Include="DevExpress.RichEdit.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v13.2" />
+    <Reference Include="DevExpress.Utils.v13.2.UI, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v13.2" />
+    <Reference Include="DevExpress.Sparkline.v13.2.Core" />
+    <Reference Include="DevExpress.XtraCharts.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v13.2.UI, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v13.2.Wizard, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v13.2" />
+    <Reference Include="DevExpress.XtraGauges.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v13.2.Win, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraMap.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPivotGrid.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v13.2.Extensions, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v13.2.Extensions, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="about.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="about.Designer.cs">
+      <DependentUpon>about.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_new_article.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_new_article.Designer.cs">
+      <DependentUpon>add_new_article.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_new_stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_new_stock.Designer.cs">
+      <DependentUpon>add_new_stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="catgr_artcl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="catgr_artcl.Designer.cs">
+      <DependentUpon>catgr_artcl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="choose_forni_devi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="choose_forni_devi.Designer.cs">
+      <DependentUpon>choose_forni_devi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="choose__serv_bon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="choose__serv_bon.Designer.cs">
+      <DependentUpon>choose__serv_bon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Detail_Bon_chaque_Serv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Detail_Bon_chaque_Serv.Designer.cs">
+      <DependentUpon>Detail_Bon_chaque_Serv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Detail_Devis_chaque_forni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Detail_Devis_chaque_forni.Designer.cs">
+      <DependentUpon>Detail_Devis_chaque_forni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="edit_delete_in_stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="edit_delete_in_stock.Designer.cs">
+      <DependentUpon>edit_delete_in_stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="edit_delet_out_stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="edit_delet_out_stock.Designer.cs">
+      <DependentUpon>edit_delet_out_stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fornisseur_devis\add_activite_fornisseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fornisseur_devis\add_activite_fornisseur.Designer.cs">
+      <DependentUpon>add_activite_fornisseur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fornisseur_devis\edit_forni_devi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fornisseur_devis\edit_forni_devi.Designer.cs">
+      <DependentUpon>edit_forni_devi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fornisseur_devis\new_devi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fornisseur_devis\new_devi.Designer.cs">
+      <DependentUpon>new_devi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="model\catgr.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\devis.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\fornisseur.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\forni_activite.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\les_articles.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\les_bon.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\les_services.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\settings.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\stocks_in.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\stock_out.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\type_activite_fornisseur.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\users.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="service_bon\edit_serv_bon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="service_bon\edit_serv_bon.Designer.cs">
+      <DependentUpon>edit_serv_bon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="model\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="fornisseur_devis\new_forn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fornisseur_devis\new_forn.Designer.cs">
+      <DependentUpon>new_forn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="service_bon\new_serv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="service_bon\new_serv.Designer.cs">
+      <DependentUpon>new_serv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="service_bon\new_bon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="service_bon\new_bon.Designer.cs">
+      <DependentUpon>new_bon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="out_stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="out_stock.Designer.cs">
+      <DependentUpon>out_stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="print\XtraReport1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="print\XtraReport1.Designer.cs">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="print\XtraReport2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="print\XtraReport2.Designer.cs">
+      <DependentUpon>XtraReport2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="print\XtraReport4.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="print\XtraReport4.Designer.cs">
+      <DependentUpon>XtraReport4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="save_data_base.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="save_data_base.Designer.cs">
+      <DependentUpon>save_data_base.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting_Prices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting_Prices.Designer.cs">
+      <DependentUpon>Setting_Prices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show_all_forni_devis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="show_all_forni_devis.Designer.cs">
+      <DependentUpon>show_all_forni_devis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show_all_servc_bon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="show_all_servc_bon.Designer.cs">
+      <DependentUpon>show_all_servc_bon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show_article.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="show_article.Designer.cs">
+      <DependentUpon>show_article.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show_currnt_mounth_fact_stockIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="show_currnt_mounth_fact_stockIN.Designer.cs">
+      <DependentUpon>show_currnt_mounth_fact_stockIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stat_artcl_minus_in_stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stat_artcl_minus_in_stock.Designer.cs">
+      <DependentUpon>Stat_artcl_minus_in_stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stat_devis_stockOUT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stat_devis_stockOUT.Designer.cs">
+      <DependentUpon>Stat_devis_stockOUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="stat_forn_stockIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stat_forn_stockIN.Designer.cs">
+      <DependentUpon>stat_forn_stockIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stat_Global.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stat_Global.Designer.cs">
+      <DependentUpon>Stat_Global.cs</DependentUpon>
+    </Compile>
+    <Compile Include="users_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="users_form.Designer.cs">
+      <DependentUpon>users_form.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="about.resx">
+      <DependentUpon>about.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_new_article.resx">
+      <DependentUpon>add_new_article.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_new_stock.resx">
+      <DependentUpon>add_new_stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catgr_artcl.resx">
+      <DependentUpon>catgr_artcl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="choose_forni_devi.resx">
+      <DependentUpon>choose_forni_devi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="choose__serv_bon.resx">
+      <DependentUpon>choose__serv_bon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Detail_Bon_chaque_Serv.resx">
+      <DependentUpon>Detail_Bon_chaque_Serv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Detail_Devis_chaque_forni.resx">
+      <DependentUpon>Detail_Devis_chaque_forni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="edit_delete_in_stock.resx">
+      <DependentUpon>edit_delete_in_stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="edit_delet_out_stock.resx">
+      <DependentUpon>edit_delet_out_stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fornisseur_devis\add_activite_fornisseur.resx">
+      <DependentUpon>add_activite_fornisseur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fornisseur_devis\edit_forni_devi.resx">
+      <DependentUpon>edit_forni_devi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fornisseur_devis\new_devi.resx">
+      <DependentUpon>new_devi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="service_bon\edit_serv_bon.resx">
+      <DependentUpon>edit_serv_bon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fornisseur_devis\new_forn.resx">
+      <DependentUpon>new_forn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="service_bon\new_serv.resx">
+      <DependentUpon>new_serv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="service_bon\new_bon.resx">
+      <DependentUpon>new_bon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="out_stock.resx">
+      <DependentUpon>out_stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="print\XtraReport1.resx">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="print\XtraReport2.resx">
+      <DependentUpon>XtraReport2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="print\XtraReport4.resx">
+      <DependentUpon>XtraReport4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="save_data_base.resx">
+      <DependentUpon>save_data_base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting_Prices.resx">
+      <DependentUpon>Setting_Prices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show_all_forni_devis.resx">
+      <DependentUpon>show_all_forni_devis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show_all_servc_bon.resx">
+      <DependentUpon>show_all_servc_bon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show_article.resx">
+      <DependentUpon>show_article.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show_currnt_mounth_fact_stockIN.resx">
+      <DependentUpon>show_currnt_mounth_fact_stockIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stat_artcl_minus_in_stock.resx">
+      <DependentUpon>Stat_artcl_minus_in_stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stat_devis_stockOUT.resx">
+      <DependentUpon>Stat_devis_stockOUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="stat_forn_stockIN.resx">
+      <DependentUpon>stat_forn_stockIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stat_Global.resx">
+      <DependentUpon>Stat_Global.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="users_form.resx">
+      <DependentUpon>users_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="model\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="model\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </None>
+    <None Include="model\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="model\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.catgr.datasource" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.devis.datasource" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.devis1.datasource" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.fornisseur.datasource" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.forni_activite.datasource" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.les_articles.datasource" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.les_bon.datasource" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.les_services.datasource" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.settings.datasource" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.stocks_in.datasource" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.stock_out.datasource" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.type_activite_fornisseur.datasource" />
+    <None Include="Properties\DataSources\GESTION_DE_STOCK.model.users.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="model\Model1.edmx.sql" />
+    <None Include="Resources\teamviewer-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

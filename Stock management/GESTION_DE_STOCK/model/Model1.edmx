@@ -1,0 +1,751 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="gestion_de_stockModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="gestion_de_stockModelStoreContainer">
+    <EntitySet Name="usersSet" EntityType="gestion_de_stockModel.Store.usersSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="les_articlesSet" EntityType="gestion_de_stockModel.Store.les_articlesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="stocks_inSet" EntityType="gestion_de_stockModel.Store.stocks_inSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="stock_outSet" EntityType="gestion_de_stockModel.Store.stock_outSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="fornisseurSet" EntityType="gestion_de_stockModel.Store.fornisseurSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="devisSet" EntityType="gestion_de_stockModel.Store.devisSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="les_servicesSet" EntityType="gestion_de_stockModel.Store.les_servicesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="les_bonSet" EntityType="gestion_de_stockModel.Store.les_bonSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="catgrSet" EntityType="gestion_de_stockModel.Store.catgrSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="settingsSet" EntityType="gestion_de_stockModel.Store.settingsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="type_activite_fornisseurSet" EntityType="gestion_de_stockModel.Store.type_activite_fornisseurSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="forni_activiteSet" EntityType="gestion_de_stockModel.Store.forni_activiteSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="les_articlesstocks_in" Association="gestion_de_stockModel.Store.les_articlesstocks_in">
+      <End Role="les_articles" EntitySet="les_articlesSet" />
+      <End Role="stocks_in" EntitySet="stocks_inSet" />
+    </AssociationSet>
+    <AssociationSet Name="les_articlesstock_out" Association="gestion_de_stockModel.Store.les_articlesstock_out">
+      <End Role="les_articles" EntitySet="les_articlesSet" />
+      <End Role="stock_out" EntitySet="stock_outSet" />
+    </AssociationSet>
+    <AssociationSet Name="fornisseurdevis" Association="gestion_de_stockModel.Store.fornisseurdevis">
+      <End Role="fornisseur" EntitySet="fornisseurSet" />
+      <End Role="devis" EntitySet="devisSet" />
+    </AssociationSet>
+    <AssociationSet Name="devisstocks_in" Association="gestion_de_stockModel.Store.devisstocks_in">
+      <End Role="devis" EntitySet="devisSet" />
+      <End Role="stocks_in" EntitySet="stocks_inSet" />
+    </AssociationSet>
+    <AssociationSet Name="les_servicesles_bon" Association="gestion_de_stockModel.Store.les_servicesles_bon">
+      <End Role="les_services" EntitySet="les_servicesSet" />
+      <End Role="les_bon" EntitySet="les_bonSet" />
+    </AssociationSet>
+    <AssociationSet Name="les_bonstock_out" Association="gestion_de_stockModel.Store.les_bonstock_out">
+      <End Role="les_bon" EntitySet="les_bonSet" />
+      <End Role="stock_out" EntitySet="stock_outSet" />
+    </AssociationSet>
+    <AssociationSet Name="catgrles_articles" Association="gestion_de_stockModel.Store.catgrles_articles">
+      <End Role="catgr" EntitySet="catgrSet" />
+      <End Role="les_articles" EntitySet="les_articlesSet" />
+    </AssociationSet>
+    <AssociationSet Name="fornisseurforni_activite" Association="gestion_de_stockModel.Store.fornisseurforni_activite">
+      <End Role="fornisseur" EntitySet="fornisseurSet" />
+      <End Role="forni_activite" EntitySet="forni_activiteSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="usersSet">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_names" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="passwords" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="permissions" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="les_articlesSet">
+    <Key>
+      <PropertyRef Name="id_article" />
+    </Key>
+    <Property Name="id_article" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_article" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="quantite_total" Type="int" Nullable="true" />
+    <Property Name="catgr_id_catgr" Type="int" Nullable="false" />
+    <Property Name="prixx_artcl_stock" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="stocks_inSet">
+    <Key>
+      <PropertyRef Name="id_stock_in" />
+    </Key>
+    <Property Name="id_stock_in" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_in" Type="datetime" Nullable="false" />
+    <Property Name="quantite_in" Type="int" Nullable="false" />
+    <Property Name="les_articles_id_article" Type="int" Nullable="false" />
+    <Property Name="prix_article" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="devis_id_devis" Type="int" Nullable="false" />
+    <Property Name="prix_in_unitaire_x_quntite" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="stock_outSet">
+    <Key>
+      <PropertyRef Name="id_stock_out" />
+    </Key>
+    <Property Name="id_stock_out" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_out" Type="datetime" Nullable="false" />
+    <Property Name="quantite_out" Type="int" Nullable="false" />
+    <Property Name="les_articles_id_article" Type="int" Nullable="false" />
+    <Property Name="les_bon_id_bon" Type="int" Nullable="false" />
+    <Property Name="prix_article_out" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="prix_out_unitaire_x_quantite" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="fornisseurSet">
+    <Key>
+      <PropertyRef Name="id_fornisseur" />
+    </Key>
+    <Property Name="id_fornisseur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_fornisseur" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="prenom_fornisseur" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="societe_fornisseur" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="date_naic_forn" Type="datetime" Nullable="true" />
+    <Property Name="lieu_naic_forn" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="addrs_forn_pers" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="addrs_forn_fonct" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="phone_numbre_forn" Type="int" Nullable="true" />
+    <Property Name="num_id_fiscale" Type="int" Nullable="false" />
+    <Property Name="num_id_statistique" Type="int" Nullable="false" />
+    <Property Name="num_eng_commercial" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="date_eng_commercial" Type="datetime" Nullable="false" />
+    <Property Name="num_bankaire" Type="int" Nullable="false" />
+    <Property Name="nom_bankaire" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nom_agence_bankaire" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="devisSet">
+    <Key>
+      <PropertyRef Name="id_devis" />
+    </Key>
+    <Property Name="id_devis" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="n_facture" Type="int" Nullable="false" />
+    <Property Name="date_facture" Type="datetime" Nullable="false" />
+    <Property Name="fornisseur_id_fornisseur" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="les_servicesSet">
+    <Key>
+      <PropertyRef Name="id_service" />
+    </Key>
+    <Property Name="id_service" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_service" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nom_responsable_srvc" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="les_bonSet">
+    <Key>
+      <PropertyRef Name="id_bon" />
+    </Key>
+    <Property Name="id_bon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="n_bon" Type="int" Nullable="false" />
+    <Property Name="date_bon" Type="datetime" Nullable="false" />
+    <Property Name="les_services_id_service" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="catgrSet">
+    <Key>
+      <PropertyRef Name="id_catgr" />
+    </Key>
+    <Property Name="id_catgr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_catgr" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="settingsSet">
+    <Key>
+      <PropertyRef Name="id_setting" />
+    </Key>
+    <Property Name="id_setting" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="etat_price" Type="int" Nullable="false" />
+    <Property Name="etat_config" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="type_activite_fornisseurSet">
+    <Key>
+      <PropertyRef Name="id_activi_forn" />
+    </Key>
+    <Property Name="id_activi_forn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code_activite" Type="int" Nullable="false" />
+    <Property Name="nom_activite" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="forni_activiteSet">
+    <Key>
+      <PropertyRef Name="id_forni_actv" />
+    </Key>
+    <Property Name="id_forni_actv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code_active" Type="int" Nullable="false" />
+    <Property Name="nom_active" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fornisseur_id_fornisseur" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="les_articlesstocks_in">
+    <End Role="les_articles" Type="gestion_de_stockModel.Store.les_articlesSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="stocks_in" Type="gestion_de_stockModel.Store.stocks_inSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="les_articles">
+        <PropertyRef Name="id_article" />
+      </Principal>
+      <Dependent Role="stocks_in">
+        <PropertyRef Name="les_articles_id_article" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="les_articlesstock_out">
+    <End Role="les_articles" Type="gestion_de_stockModel.Store.les_articlesSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="stock_out" Type="gestion_de_stockModel.Store.stock_outSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="les_articles">
+        <PropertyRef Name="id_article" />
+      </Principal>
+      <Dependent Role="stock_out">
+        <PropertyRef Name="les_articles_id_article" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fornisseurdevis">
+    <End Role="fornisseur" Type="gestion_de_stockModel.Store.fornisseurSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="devis" Type="gestion_de_stockModel.Store.devisSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fornisseur">
+        <PropertyRef Name="id_fornisseur" />
+      </Principal>
+      <Dependent Role="devis">
+        <PropertyRef Name="fornisseur_id_fornisseur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="devisstocks_in">
+    <End Role="devis" Type="gestion_de_stockModel.Store.devisSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="stocks_in" Type="gestion_de_stockModel.Store.stocks_inSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="devis">
+        <PropertyRef Name="id_devis" />
+      </Principal>
+      <Dependent Role="stocks_in">
+        <PropertyRef Name="devis_id_devis" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="les_servicesles_bon">
+    <End Role="les_services" Type="gestion_de_stockModel.Store.les_servicesSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="les_bon" Type="gestion_de_stockModel.Store.les_bonSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="les_services">
+        <PropertyRef Name="id_service" />
+      </Principal>
+      <Dependent Role="les_bon">
+        <PropertyRef Name="les_services_id_service" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="les_bonstock_out">
+    <End Role="les_bon" Type="gestion_de_stockModel.Store.les_bonSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="stock_out" Type="gestion_de_stockModel.Store.stock_outSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="les_bon">
+        <PropertyRef Name="id_bon" />
+      </Principal>
+      <Dependent Role="stock_out">
+        <PropertyRef Name="les_bon_id_bon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="catgrles_articles">
+    <End Role="catgr" Type="gestion_de_stockModel.Store.catgrSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="les_articles" Type="gestion_de_stockModel.Store.les_articlesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="catgr">
+        <PropertyRef Name="id_catgr" />
+      </Principal>
+      <Dependent Role="les_articles">
+        <PropertyRef Name="catgr_id_catgr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fornisseurforni_activite">
+    <End Role="fornisseur" Type="gestion_de_stockModel.Store.fornisseurSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="forni_activite" Type="gestion_de_stockModel.Store.forni_activiteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fornisseur">
+        <PropertyRef Name="id_fornisseur" />
+      </Principal>
+      <Dependent Role="forni_activite">
+        <PropertyRef Name="fornisseur_id_fornisseur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gestion_de_stockModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="gestion_de_stockEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="usersSet" EntityType="gestion_de_stockModel.users" />
+          <EntitySet Name="les_articlesSet" EntityType="gestion_de_stockModel.les_articles" />
+          <EntitySet Name="stocks_inSet" EntityType="gestion_de_stockModel.stocks_in" />
+          <EntitySet Name="stock_outSet" EntityType="gestion_de_stockModel.stock_out" />
+          <AssociationSet Name="les_articlesstocks_in" Association="gestion_de_stockModel.les_articlesstocks_in">
+            <End Role="les_articles" EntitySet="les_articlesSet" />
+            <End Role="stocks_in" EntitySet="stocks_inSet" />
+          </AssociationSet>
+          <AssociationSet Name="les_articlesstock_out" Association="gestion_de_stockModel.les_articlesstock_out">
+            <End Role="les_articles" EntitySet="les_articlesSet" />
+            <End Role="stock_out" EntitySet="stock_outSet" />
+          </AssociationSet>
+          <EntitySet Name="fornisseurSet" EntityType="gestion_de_stockModel.fornisseur" />
+          <EntitySet Name="devisSet" EntityType="gestion_de_stockModel.devis" />
+          <AssociationSet Name="fornisseurdevis" Association="gestion_de_stockModel.fornisseurdevis">
+            <End Role="fornisseur" EntitySet="fornisseurSet" />
+            <End Role="devis" EntitySet="devisSet" />
+          </AssociationSet>
+          <AssociationSet Name="devisstocks_in" Association="gestion_de_stockModel.devisstocks_in">
+            <End Role="devis" EntitySet="devisSet" />
+            <End Role="stocks_in" EntitySet="stocks_inSet" />
+          </AssociationSet>
+          <EntitySet Name="les_servicesSet" EntityType="gestion_de_stockModel.les_services" />
+          <EntitySet Name="les_bonSet" EntityType="gestion_de_stockModel.les_bon" />
+          <AssociationSet Name="les_servicesles_bon" Association="gestion_de_stockModel.les_servicesles_bon">
+            <End Role="les_services" EntitySet="les_servicesSet" />
+            <End Role="les_bon" EntitySet="les_bonSet" />
+          </AssociationSet>
+          <AssociationSet Name="les_bonstock_out" Association="gestion_de_stockModel.les_bonstock_out">
+            <End Role="les_bon" EntitySet="les_bonSet" />
+            <End Role="stock_out" EntitySet="stock_outSet" />
+          </AssociationSet>
+          <EntitySet Name="catgrSet" EntityType="gestion_de_stockModel.catgr" />
+          <AssociationSet Name="catgrles_articles" Association="gestion_de_stockModel.catgrles_articles">
+            <End Role="catgr" EntitySet="catgrSet" />
+            <End Role="les_articles" EntitySet="les_articlesSet" />
+          </AssociationSet>
+          <EntitySet Name="settingsSet" EntityType="gestion_de_stockModel.settings" />
+          <EntitySet Name="type_activite_fornisseurSet" EntityType="gestion_de_stockModel.type_activite_fornisseur" />
+          <EntitySet Name="forni_activiteSet" EntityType="gestion_de_stockModel.forni_activite" />
+          <AssociationSet Name="fornisseurforni_activite" Association="gestion_de_stockModel.fornisseurforni_activite">
+            <End Role="fornisseur" EntitySet="fornisseurSet" />
+            <End Role="forni_activite" EntitySet="forni_activiteSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_names" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="passwords" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="permissions" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="les_articles">
+          <Key>
+            <PropertyRef Name="id_article" />
+          </Key>
+          <Property Name="id_article" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_article" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="quantite_total" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="stocks_in" Relationship="gestion_de_stockModel.les_articlesstocks_in" FromRole="les_articles" ToRole="stocks_in" />
+          <NavigationProperty Name="stock_out" Relationship="gestion_de_stockModel.les_articlesstock_out" FromRole="les_articles" ToRole="stock_out" />
+          <NavigationProperty Name="catgr" Relationship="gestion_de_stockModel.catgrles_articles" FromRole="les_articles" ToRole="catgr" />
+          <Property Name="catgr_id_catgr" Type="Int32" Nullable="false" />
+          <Property Name="prixx_artcl_stock" Type="Decimal" Nullable="true" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="stocks_in">
+          <Key>
+            <PropertyRef Name="id_stock_in" />
+          </Key>
+          <Property Name="id_stock_in" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_in" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="quantite_in" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="les_articles" Relationship="gestion_de_stockModel.les_articlesstocks_in" FromRole="stocks_in" ToRole="les_articles" />
+          <Property Name="les_articles_id_article" Type="Int32" Nullable="false" />
+          <Property Name="prix_article" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="devis" Relationship="gestion_de_stockModel.devisstocks_in" FromRole="stocks_in" ToRole="devis" />
+          <Property Name="devis_id_devis" Type="Int32" Nullable="false" />
+          <Property Name="prix_in_unitaire_x_quntite" Type="Decimal" Precision="18" Scale="2" Nullable="true" />
+        </EntityType>
+        <EntityType Name="stock_out">
+          <Key>
+            <PropertyRef Name="id_stock_out" />
+          </Key>
+          <Property Name="id_stock_out" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_out" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="quantite_out" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="les_articles" Relationship="gestion_de_stockModel.les_articlesstock_out" FromRole="stock_out" ToRole="les_articles" />
+          <Property Name="les_articles_id_article" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="les_bon" Relationship="gestion_de_stockModel.les_bonstock_out" FromRole="stock_out" ToRole="les_bon" />
+          <Property Name="les_bon_id_bon" Type="Int32" Nullable="false" />
+          <Property Name="prix_article_out" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="prix_out_unitaire_x_quantite" Type="Decimal" Precision="18" Scale="2" Nullable="true" />
+        </EntityType>
+        <Association Name="les_articlesstocks_in">
+          <End Type="gestion_de_stockModel.les_articles" Role="les_articles" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gestion_de_stockModel.stocks_in" Role="stocks_in" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="les_articles">
+              <PropertyRef Name="id_article" />
+            </Principal>
+            <Dependent Role="stocks_in">
+              <PropertyRef Name="les_articles_id_article" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="les_articlesstock_out">
+          <End Type="gestion_de_stockModel.les_articles" Role="les_articles" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gestion_de_stockModel.stock_out" Role="stock_out" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="les_articles">
+              <PropertyRef Name="id_article" />
+            </Principal>
+            <Dependent Role="stock_out">
+              <PropertyRef Name="les_articles_id_article" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="fornisseur">
+          <Key>
+            <PropertyRef Name="id_fornisseur" />
+          </Key>
+          <Property Name="id_fornisseur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_fornisseur" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="devis" Relationship="gestion_de_stockModel.fornisseurdevis" FromRole="fornisseur" ToRole="devis" />
+          <Property Name="prenom_fornisseur" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="societe_fornisseur" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="date_naic_forn" Type="DateTime" Nullable="true" />
+          <Property Name="lieu_naic_forn" Type="String" Nullable="true" />
+          <Property Name="addrs_forn_pers" Type="String" Nullable="false" />
+          <Property Name="addrs_forn_fonct" Type="String" Nullable="false" />
+          <Property Name="phone_numbre_forn" Type="Int32" Nullable="true" />
+          <Property Name="num_id_fiscale" Type="Int32" Nullable="false" />
+          <Property Name="num_id_statistique" Type="Int32" Nullable="false" />
+          <Property Name="num_eng_commercial" Type="String" Nullable="false" />
+          <Property Name="date_eng_commercial" Type="DateTime" Nullable="false" />
+          <Property Name="num_bankaire" Type="Int32" Nullable="false" />
+          <Property Name="nom_bankaire" Type="String" Nullable="false" />
+          <Property Name="nom_agence_bankaire" Type="String" Nullable="false" />
+          <NavigationProperty Name="forni_activite" Relationship="gestion_de_stockModel.fornisseurforni_activite" FromRole="fornisseur" ToRole="forni_activite" />
+        </EntityType>
+        <EntityType Name="devis">
+          <Key>
+            <PropertyRef Name="id_devis" />
+          </Key>
+          <Property Name="id_devis" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="n_facture" Type="Int32" Nullable="false" />
+          <Property Name="date_facture" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="fornisseur" Relationship="gestion_de_stockModel.fornisseurdevis" FromRole="devis" ToRole="fornisseur" />
+          <Property Name="fornisseur_id_fornisseur" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="stocks_in" Relationship="gestion_de_stockModel.devisstocks_in" FromRole="devis" ToRole="stocks_in" />
+        </EntityType>
+        <Association Name="fornisseurdevis">
+          <End Type="gestion_de_stockModel.fornisseur" Role="fornisseur" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gestion_de_stockModel.devis" Role="devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fornisseur">
+              <PropertyRef Name="id_fornisseur" />
+            </Principal>
+            <Dependent Role="devis">
+              <PropertyRef Name="fornisseur_id_fornisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="devisstocks_in">
+          <End Type="gestion_de_stockModel.devis" Role="devis" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gestion_de_stockModel.stocks_in" Role="stocks_in" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="devis">
+              <PropertyRef Name="id_devis" />
+            </Principal>
+            <Dependent Role="stocks_in">
+              <PropertyRef Name="devis_id_devis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="les_services">
+          <Key>
+            <PropertyRef Name="id_service" />
+          </Key>
+          <Property Name="id_service" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_service" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="les_bon" Relationship="gestion_de_stockModel.les_servicesles_bon" FromRole="les_services" ToRole="les_bon" />
+          <Property Name="nom_responsable_srvc" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="les_bon">
+          <Key>
+            <PropertyRef Name="id_bon" />
+          </Key>
+          <Property Name="id_bon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="n_bon" Type="Int32" Nullable="false" />
+          <Property Name="date_bon" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="les_services" Relationship="gestion_de_stockModel.les_servicesles_bon" FromRole="les_bon" ToRole="les_services" />
+          <Property Name="les_services_id_service" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="stock_out" Relationship="gestion_de_stockModel.les_bonstock_out" FromRole="les_bon" ToRole="stock_out" />
+        </EntityType>
+        <Association Name="les_servicesles_bon">
+          <End Type="gestion_de_stockModel.les_services" Role="les_services" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gestion_de_stockModel.les_bon" Role="les_bon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="les_services">
+              <PropertyRef Name="id_service" />
+            </Principal>
+            <Dependent Role="les_bon">
+              <PropertyRef Name="les_services_id_service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="les_bonstock_out">
+          <End Type="gestion_de_stockModel.les_bon" Role="les_bon" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gestion_de_stockModel.stock_out" Role="stock_out" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="les_bon">
+              <PropertyRef Name="id_bon" />
+            </Principal>
+            <Dependent Role="stock_out">
+              <PropertyRef Name="les_bon_id_bon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="catgr">
+          <Key>
+            <PropertyRef Name="id_catgr" />
+          </Key>
+          <Property Name="id_catgr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_catgr" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="les_articles" Relationship="gestion_de_stockModel.catgrles_articles" FromRole="catgr" ToRole="les_articles" />
+        </EntityType>
+        <Association Name="catgrles_articles">
+          <End Type="gestion_de_stockModel.catgr" Role="catgr" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gestion_de_stockModel.les_articles" Role="les_articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catgr">
+              <PropertyRef Name="id_catgr" />
+            </Principal>
+            <Dependent Role="les_articles">
+              <PropertyRef Name="catgr_id_catgr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="settings">
+          <Key>
+            <PropertyRef Name="id_setting" />
+          </Key>
+          <Property Name="id_setting" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="etat_price" Type="Int32" Nullable="false" />
+          <Property Name="etat_config" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_activite_fornisseur">
+          <Key>
+            <PropertyRef Name="id_activi_forn" />
+          </Key>
+          <Property Name="id_activi_forn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code_activite" Type="Int32" Nullable="false" />
+          <Property Name="nom_activite" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="forni_activite">
+          <Key>
+            <PropertyRef Name="id_forni_actv" />
+          </Key>
+          <Property Name="id_forni_actv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code_active" Type="Int32" Nullable="false" />
+          <Property Name="nom_active" Type="String" Nullable="false" />
+          <NavigationProperty Name="fornisseur" Relationship="gestion_de_stockModel.fornisseurforni_activite" FromRole="forni_activite" ToRole="fornisseur" />
+          <Property Name="fornisseur_id_fornisseur" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="fornisseurforni_activite">
+          <End Type="gestion_de_stockModel.fornisseur" Role="fornisseur" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gestion_de_stockModel.forni_activite" Role="forni_activite" Multiplicity="*" >
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="fornisseur">
+              <PropertyRef Name="id_fornisseur" />
+            </Principal>
+            <Dependent Role="forni_activite">
+              <PropertyRef Name="fornisseur_id_fornisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gestion_de_stockModelStoreContainer" CdmEntityContainer="gestion_de_stockEntities">
+    <EntitySetMapping Name="usersSet">
+      <EntityTypeMapping TypeName="IsTypeOf(gestion_de_stockModel.users)">
+        <MappingFragment StoreEntitySet="usersSet">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="user_names" ColumnName="user_names" />
+          <ScalarProperty Name="passwords" ColumnName="passwords" />
+          <ScalarProperty Name="permissions" ColumnName="permissions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="les_articlesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(gestion_de_stockModel.les_articles)">
+        <MappingFragment StoreEntitySet="les_articlesSet">
+          <ScalarProperty Name="id_article" ColumnName="id_article" />
+          <ScalarProperty Name="nom_article" ColumnName="nom_article" />
+          <ScalarProperty Name="quantite_total" ColumnName="quantite_total" />
+          <ScalarProperty Name="catgr_id_catgr" ColumnName="catgr_id_catgr" />
+          <ScalarProperty Name="prixx_artcl_stock" ColumnName="prixx_artcl_stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stocks_inSet">
+      <EntityTypeMapping TypeName="IsTypeOf(gestion_de_stockModel.stocks_in)">
+        <MappingFragment StoreEntitySet="stocks_inSet">
+          <ScalarProperty Name="id_stock_in" ColumnName="id_stock_in" />
+          <ScalarProperty Name="date_in" ColumnName="date_in" />
+          <ScalarProperty Name="quantite_in" ColumnName="quantite_in" />
+          <ScalarProperty Name="les_articles_id_article" ColumnName="les_articles_id_article" />
+          <ScalarProperty Name="prix_article" ColumnName="prix_article" />
+          <ScalarProperty Name="devis_id_devis" ColumnName="devis_id_devis" />
+          <ScalarProperty Name="prix_in_unitaire_x_quntite" ColumnName="prix_in_unitaire_x_quntite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stock_outSet">
+      <EntityTypeMapping TypeName="IsTypeOf(gestion_de_stockModel.stock_out)">
+        <MappingFragment StoreEntitySet="stock_outSet">
+          <ScalarProperty Name="id_stock_out" ColumnName="id_stock_out" />
+          <ScalarProperty Name="date_out" ColumnName="date_out" />
+          <ScalarProperty Name="quantite_out" ColumnName="quantite_out" />
+          <ScalarProperty Name="les_articles_id_article" ColumnName="les_articles_id_article" />
+          <ScalarProperty Name="les_bon_id_bon" ColumnName="les_bon_id_bon" />
+          <ScalarProperty Name="prix_article_out" ColumnName="prix_article_out" />
+          <ScalarProperty Name="prix_out_unitaire_x_quantite" ColumnName="prix_out_unitaire_x_quantite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fornisseurSet">
+      <EntityTypeMapping TypeName="IsTypeOf(gestion_de_stockModel.fornisseur)">
+        <MappingFragment StoreEntitySet="fornisseurSet">
+          <ScalarProperty Name="id_fornisseur" ColumnName="id_fornisseur" />
+          <ScalarProperty Name="nom_fornisseur" ColumnName="nom_fornisseur" />
+          <ScalarProperty Name="prenom_fornisseur" ColumnName="prenom_fornisseur" />
+          <ScalarProperty Name="societe_fornisseur" ColumnName="societe_fornisseur" />
+          <ScalarProperty Name="date_naic_forn" ColumnName="date_naic_forn" />
+          <ScalarProperty Name="lieu_naic_forn" ColumnName="lieu_naic_forn" />
+          <ScalarProperty Name="addrs_forn_pers" ColumnName="addrs_forn_pers" />
+          <ScalarProperty Name="addrs_forn_fonct" ColumnName="addrs_forn_fonct" />
+          <ScalarProperty Name="phone_numbre_forn" ColumnName="phone_numbre_forn" />
+          <ScalarProperty Name="num_id_fiscale" ColumnName="num_id_fiscale" />
+          <ScalarProperty Name="num_id_statistique" ColumnName="num_id_statistique" />
+          <ScalarProperty Name="num_eng_commercial" ColumnName="num_eng_commercial" />
+          <ScalarProperty Name="date_eng_commercial" ColumnName="date_eng_commercial" />
+          <ScalarProperty Name="num_bankaire" ColumnName="num_bankaire" />
+          <ScalarProperty Name="nom_bankaire" ColumnName="nom_bankaire" />
+          <ScalarProperty Name="nom_agence_bankaire" ColumnName="nom_agence_bankaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="devisSet">
+      <EntityTypeMapping TypeName="IsTypeOf(gestion_de_stockModel.devis)">
+        <MappingFragment StoreEntitySet="devisSet">
+          <ScalarProperty Name="id_devis" ColumnName="id_devis" />
+          <ScalarProperty Name="n_facture" ColumnName="n_facture" />
+          <ScalarProperty Name="date_facture" ColumnName="date_facture" />
+          <ScalarProperty Name="fornisseur_id_fornisseur" ColumnName="fornisseur_id_fornisseur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="les_servicesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(gestion_de_stockModel.les_services)">
+        <MappingFragment StoreEntitySet="les_servicesSet">
+          <ScalarProperty Name="id_service" ColumnName="id_service" />
+          <ScalarProperty Name="nom_service" ColumnName="nom_service" />
+          <ScalarProperty Name="nom_responsable_srvc" ColumnName="nom_responsable_srvc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="les_bonSet">
+      <EntityTypeMapping TypeName="IsTypeOf(gestion_de_stockModel.les_bon)">
+        <MappingFragment StoreEntitySet="les_bonSet">
+          <ScalarProperty Name="id_bon" ColumnName="id_bon" />
+          <ScalarProperty Name="n_bon" ColumnName="n_bon" />
+          <ScalarProperty Name="date_bon" ColumnName="date_bon" />
+          <ScalarProperty Name="les_services_id_service" ColumnName="les_services_id_service" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="catgrSet">
+      <EntityTypeMapping TypeName="IsTypeOf(gestion_de_stockModel.catgr)">
+        <MappingFragment StoreEntitySet="catgrSet">
+          <ScalarProperty Name="id_catgr" ColumnName="id_catgr" />
+          <ScalarProperty Name="nom_catgr" ColumnName="nom_catgr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="settingsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(gestion_de_stockModel.settings)">
+        <MappingFragment StoreEntitySet="settingsSet">
+          <ScalarProperty Name="id_setting" ColumnName="id_setting" />
+          <ScalarProperty Name="etat_price" ColumnName="etat_price" />
+          <ScalarProperty Name="etat_config" ColumnName="etat_config" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_activite_fornisseurSet">
+      <EntityTypeMapping TypeName="IsTypeOf(gestion_de_stockModel.type_activite_fornisseur)">
+        <MappingFragment StoreEntitySet="type_activite_fornisseurSet">
+          <ScalarProperty Name="id_activi_forn" ColumnName="id_activi_forn" />
+          <ScalarProperty Name="code_activite" ColumnName="code_activite" />
+          <ScalarProperty Name="nom_activite" ColumnName="nom_activite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="forni_activiteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(gestion_de_stockModel.forni_activite)">
+        <MappingFragment StoreEntitySet="forni_activiteSet">
+          <ScalarProperty Name="id_forni_actv" ColumnName="id_forni_actv" />
+          <ScalarProperty Name="code_active" ColumnName="code_active" />
+          <ScalarProperty Name="nom_active" ColumnName="nom_active" />
+          <ScalarProperty Name="fornisseur_id_fornisseur" ColumnName="fornisseur_id_fornisseur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
